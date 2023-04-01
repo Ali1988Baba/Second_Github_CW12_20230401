@@ -88,7 +88,47 @@
             Console.Write(" Çekilmek için R'ye Basınız: ");
             char secim = char.Parse(Console.ReadLine().ToUpper());
 
+            if (secim == 'J')
+            {
+                if (!jokerHak)
+                {
+                    Console.WriteLine("Joker Hakkınız Bitmiştir..");
+                    goto yanitNoktasi;
+                }
 
-        }
-    }
+                Console.WriteLine("1-) " + (seyirciHak ? "Seyirci" : ""));
+                Console.WriteLine("2-) " + (yuzdeHak ? "%50" : ""));
+                Console.WriteLine("3-) " + (telefonHak ? "Telefon" : ""));
+                Console.Write("Seçiminizi Yapınız: ");
+                int jokerCevap = int.Parse(Console.ReadLine());
+
+                if (jokerCevap == 1 && seyirciHak)
+                {
+                    Console.WriteLine("A) %" + seyirciYuzdeA);
+                    Console.WriteLine("B) %" + seyirciYuzdeB);
+                    Console.WriteLine("C) %" + seyirciYuzdeC);
+                    Console.WriteLine("D) %" + seyirciYuzdeD);
+                    seyirciHak = false;
+                }
+                else if (jokerCevap == 2 && yuzdeHak)
+                {
+                    // TODO: Bu kısım sorudan bağımsız kullanılabilmeli.
+                    gizleB = true;
+                    gizleC = true;
+
+                    yuzdeHak = false;
+                    goto soruNoktasi;
+                }
+                else if (jokerCevap == 3 && telefonHak)
+                {
+                    Console.WriteLine("1-) " + telefonJoker1);
+                    Console.WriteLine("2-) " + telefonJoker2);
+                    Console.WriteLine("3-) " + telefonJoker3);
+                    Console.Write("Kimi Aramak İstersiniz? : ");
+                    int telefonCevap = int.Parse(Console.ReadLine());
+
+
+
+                }
+            }
 }
